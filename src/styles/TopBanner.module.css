@@ -1,0 +1,108 @@
+/* ../styles/TopBanner.module.css */
+.banner {
+    position: fixed;
+    top: 0;
+    /* Adjust width to account for the sidebar when it's not collapsed */
+    width: calc(100% - var(--sidebar-width));
+    margin-left: var(--sidebar-width); /* Push banner right of sidebar */
+    background-color: #ffffff; /* Typically a light background for header */
+    color: var(--text-dark); /* Dark text for a light background */
+    display: flex;
+    align-items: center;
+    padding: 15px 20px; /* More generous padding */
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    transition: var(--transition); /* Apply global transition */
+    z-index: 999; /* Ensure it stays on top */
+}
+
+/* Adjust banner when sidebar is collapsed (for smaller screens) */
+@media (max-width: 992px) {
+    .banner {
+        width: calc(100% - 80px); /* Adjust for collapsed sidebar width */
+        margin-left: 80px;
+    }
+}
+
+/* Adjust banner when sidebar is completely hidden (mobile) */
+@media (max-width: 768px) {
+    .banner {
+        width: 100%; /* Full width when sidebar is hidden */
+        margin-left: 0;
+        padding: 10px 15px; /* Slightly less padding on mobile */
+    }
+}
+
+.pageTitle { /* New class for the h2 element */
+    font-size: 24px; /* Consistent with your page-title h1 */
+    color: var(--color1); /* Use primary color for titles */
+    flex-grow: 1; /* Allows it to take available space */
+}
+
+.hamburger {
+    font-size: 24px;
+    background: none;
+    color: var(--color1); /* Use primary color for icon */
+    border: none;
+    cursor: pointer;
+    margin-right: 20px; /* Space between hamburger and title */
+    display: none; /* Hidden by default, shown on smaller screens */
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block; /* Show hamburger on smaller screens */
+    }
+}
+
+.search { /* Renamed from .search-bar for clarity */
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Push search to the right */
+    margin-right: 20px; /* Space before notifications */
+}
+
+.search input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    width: 250px; /* Consistent with your existing search bar */
+    transition: var(--transition);
+}
+
+.search input:focus {
+    border-color: var(--color2); /* Highlight on focus */
+}
+
+.notifications {
+    font-size: 20px; /* Slightly larger icon */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color1); /* Use primary color for icon */
+    position: relative; /* For badge positioning */
+    padding: 5px; /* Add some padding for click area */
+    transition: var(--transition);
+}
+
+.notifications:hover {
+    color: var(--color2); /* Change color on hover */
+}
+
+.badge {
+    background-color: red; /* Standard notification badge color */
+    color: var(--text-light);
+    font-size: 11px; /* Slightly smaller font size */
+    padding: 3px 7px; /* Adjusted padding */
+    border-radius: 50%;
+    position: absolute;
+    top: -5px; /* Adjust positioning */
+    right: -5px; /* Adjust positioning */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px; /* Ensure badge has a minimum size */
+    height: 20px; /* Ensure badge has a minimum size */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Subtle shadow for badge */
+}

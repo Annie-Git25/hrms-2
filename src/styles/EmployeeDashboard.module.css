@@ -1,0 +1,45 @@
+/* src/styles/EmployeeDashboard.module.css */
+
+/* No need for .dashboard as the parent div now uses "dashboard-content" from global */
+
+.infoCardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for cards */
+    gap: 20px;
+    margin-top: 25px; /* Space from heading */
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align text to the left */
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 20px;
+    color: var(--color2); /* Accent color for card titles */
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 16px;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 20px; /* Space between content and button */
+}
+
+/* Ensure buttons within cards also use the primary-button style */
+/* If primary-button is global, you don't need this. If not, consider making it global. */
+/* .card .primary-button {
+    margin-top: auto; // Pushes button to bottom if card content varies
+} */

@@ -1,0 +1,66 @@
+/* src/styles/AuthPage.module.css */
+.authContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: var(--color1); /* Use your primary dark color as background */
+    color: var(--text-light); /* Light text for contrast */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+.title {
+    font-size: 32px;
+    color: var(--color3); /* Use your accent color for the title */
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.form {
+    background-color: #ffffff; /* White background for the form itself */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px; /* Limit form width */
+    transition: var(--transition); /* Apply global transition */
+}
+
+.input {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 4px;
+    font-size: 16px;
+    color: var(--text-dark); /* Dark text for inputs */
+    outline: none;
+    transition: all 0.3s ease; /* Smooth transition for focus */
+}
+
+.input:focus {
+    border-color: var(--color2); /* Highlight border with accent color on focus */
+    box-shadow: 0 0 0 3px rgba(37, 61, 144, 0.2); /* Soft focus glow */
+}
+
+.button {
+    background-color: var(--color2); /* Use your accent color for the button */
+    color: var(--text-light); /* Light text for the button */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition); /* Apply global transition */
+    margin-top: 10px; /* Space above button */
+}
+
+.button:hover {
+    background-color: var(--color1); /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

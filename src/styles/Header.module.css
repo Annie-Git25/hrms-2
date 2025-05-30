@@ -1,0 +1,23 @@
+/*../styles/Header.module.css*/
+.header {
+  background: #0056b3;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userInfo {
+  display: flex;
+  gap: 10px;
+}
+
+.logoutBtn {
+  background: #d9534f;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}

@@ -1,0 +1,21 @@
+/*../styles/Button.module.css*/
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.primary {
+  background: #007bff;
+  color: white;
+}
+
+.danger {
+  background: #d9534f;
+  color: white;
+}
+.disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

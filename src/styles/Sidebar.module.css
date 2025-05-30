@@ -1,0 +1,143 @@
+/* ../styles/Sidebar.module.css */
+/* Removed redundant fixed positioning and height as it's handled by the main CSS file */
+.sidebar {
+    width: var(--sidebar-width); /* Use variable for width */
+    background-color: var(--color1); /* Use primary color */
+    color: var(--text-light); /* Use light text color */
+    transition: var(--transition); /* Apply global transition */
+    /* The main CSS file already handles fixed position, height, and display properties for .sidebar */
+    padding: 20px;
+    display: flex; /* Ensure flex column for internal layout */
+    flex-direction: column;
+}
+
+.collapsed {
+    width: 80px; /* Matches the width for smaller screens in your main CSS */
+    overflow: hidden; /* Hide overflow when collapsed */
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px; /* Add some padding for visual separation */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column;
+    align-items: center; /* Center items */
+    justify-content: center;
+}
+
+/* Hide profile text when collapsed */
+.collapsed .profile h3,
+.collapsed .profile p {
+    display: none;
+}
+
+.avatar {
+    width: 60px; /* Slightly larger avatar */
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--color2); /* Use accent color for avatar background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 10px; /* Space between avatar and text */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile h3 {
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: var(--text-light);
+}
+
+.profile p {
+    font-size: 12px;
+    opacity: 0.8;
+    color: var(--text-light);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    flex: 1; /* Allows the menu to take available space */
+}
+
+ul li {
+    margin-bottom: 5px; /* Spacing between menu items */
+}
+
+ul li a {
+    text-decoration: none;
+    color: var(--text-light); /* Use light text color */
+    padding: 12px 20px; /* Consistent padding with your template */
+    display: flex; /* Make links block-level for padding and hover effect */
+    align-items: center;
+    transition: var(--transition); /* Apply global transition */
+}
+
+ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Consistent hover effect */
+}
+
+ul li a.active { /* For active menu item */
+    background-color: var(--color3); /* Use accent color for active state */
+    color: var(--text-dark); /* Dark text for active state */
+    font-weight: 500;
+}
+
+/* Hide link text when collapsed */
+.collapsed ul li a span { /* Assuming you wrap text in a span if you add icons later */
+    display: none;
+}
+
+.logout {
+    background-color: var(--color3); /* Use accent color for logout button */
+    color: var(--text-dark); /* Dark text for the button */
+    padding: 10px 15px; /* Consistent padding */
+    width: calc(100% - 40px); /* Adjust width to account for padding */
+    border: none;
+    cursor: pointer;
+    border-radius: 4px; /* Slightly rounded corners */
+    margin: 20px; /* Add margin for spacing */
+    transition: var(--transition); /* Apply global transition */
+    font-weight: 600;
+    align-self: center; /* Center the button */
+}
+
+.logout:hover {
+    background-color: var(--color2); /* Darker accent on hover */
+    color: var(--text-light);
+}
+
+/* Toggle button styling */
+.sidebar button {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    align-self: flex-end; /* Align toggle button to the right */
+}
+
+.collapsed .sidebar button {
+    align-self: center; /* Center when collapsed */
+}
+
+/* Ensure icons display even when collapsed */
+.sidebar ul li a i {
+    margin-right: 10px;
+    font-size: 18px;
+    display: block; /* Ensure icon is always visible */
+}
+
+.collapsed ul li a i {
+    margin-right: 0; /* Remove margin when collapsed */
+}

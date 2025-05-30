@@ -1,68 +1,109 @@
+/* Your existing global CSS (e.g., index.css) */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    --color1: #121C3E;
+    --color2: #253D90;
+    --color3: #FFC20E;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --sidebar-width: 280px;
+    --transition: all 0.3s ease;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    display: flex; /* This is key for sidebar and main-content side-by-side */
+    min-height: 100vh;
+    background-color: #f5f7fa;
+    /* overflow-x: hidden; */ /* Prevent horizontal scroll if sidebar is too wide */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Ensure the app-container takes full height and flexes */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%; /* Ensure it spans full width */
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Sidebar Styles (from your initial template - ensure these are in your global css or imported) */
+.sidebar { /* This class is now used by your Sidebar.jsx component */
+    width: var(--sidebar-width);
+    background-color: var(--color1);
+    color: var(--text-light);
+    transition: var(--transition);
+    height: 100vh;
+    position: fixed; /* Keep fixed */
+    left: 0;
+    top: 0;
+    z-index: 1000; /* Ensure it's above main content */
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
+/* Main Content Styles */
+.main-content { /* This class is applied to the div containing TopBanner and page content */
+    margin-left: var(--sidebar-width); /* Accounts for the sidebar's width */
+    padding-top: 80px; /* Adjust based on your TopBanner height + some spacing */
+    transition: var(--transition);
+    display: flex; /* To arrange banner and page-content vertically */
+    flex-direction: column;
+    position: relative; /* For z-index context if needed */
+    z-index: 1; /* Ensure it's below fixed elements if any */
+    background-color: #f5f7fa; /* Match body background */
+}
+
+/* A div to hold the actual page content, with its own padding */
+.page-content {
+    padding: 20px; /* Padding for the content within each page */
+    flex-grow: 1; /* Allows page content to take up remaining space */
+}
+
+.banner {
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
     background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+    color: var(--text-dark);
+}
+
+/* Responsive Styles (ensure these are present in your global CSS) */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 80px;
+        overflow: hidden;
+    }
+
+    .sidebar:hover {
+        width: var(--sidebar-width);
+        z-index: 1000;
+    }
+
+    .main-content {
+        margin-left: 80px;
+    }
+
+    .sidebar:hover~.main-content {
+        margin-left: var(--sidebar-width);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 0;
+        position: fixed; /* Revert to fixed on mobile if you want it to slide out */
+        z-index: 1000;
+    }
+
+    .sidebar.active { /* This class would be applied by your JS to show/hide */
+        width: var(--sidebar-width);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
 }
