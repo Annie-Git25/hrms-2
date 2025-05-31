@@ -1,4 +1,3 @@
-//src/pages/AuthPage.jsx
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
@@ -7,28 +6,21 @@ import styles from "../styles/AuthPage.module.css";
 const AuthPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { user, login, loading } = useAuth(); // ✅ Removed duplicate `useAuth()` call
+    const [errorMessage, setErrorMessage] = useState(""); // ✅ Added error state
+    const { user, login, loading } = useAuth();
     const navigate = useNavigate();
-
-    console.log("🔍 User Data from AuthContext:", user); // ✅ Track user state
-    console.log("🔍 Loading State:", loading); // ✅ Track loading state
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        setErrorMessage(""); // ✅ Reset error before login attempt
 
         try {
-            const response = await login(email, password);
-
-            if (response?.success) {
-                console.log("✅ Login successful!", response);
-                navigate(response.role === "employee" ? "/employee-dashboard" : "/hr-dashboard");
-            } else {
-                console.error("❌ Login failed:", response.error);
-                alert(`Login failed: ${response.error}`);
-            }
+            await login(email, password);
+            console.log("✅ Login successful!");
+            navigate("/dashboard"); // ✅ Redirects to dashboard after login
         } catch (error) {
-            console.error("🔥 Unexpected login error:", error);
-            alert("An error occurred while logging in. Please try again.");
+            console.error("❌ Login failed:", error.message);
+            setErrorMessage(error.message); // ✅ Display error message on UI
         }
     };
 
@@ -36,7 +28,8 @@ const AuthPage = () => {
         <div className={styles.authContainer}>
             <h2 className={styles.title}>Login HRMS</h2>
 
-            {loading && <p className={styles.loadingText}>Authenticating...</p>} {/* ✅ Displays while loading */}
+            {loading && <p className={styles.loadingText}>Authenticating...</p>}
+            {errorMessage && <p className={styles.errorText}>{errorMessage}</p>} {/* ✅ Shows login errors */}
 
             <form onSubmit={handleLogin} className={styles.form}>
                 <input
@@ -56,7 +49,7 @@ const AuthPage = () => {
                     className={styles.input}
                 />
                 <button type="submit" className={styles.button} disabled={loading}>
-                    {loading ? "Logging in..." : "Login"} {/* ✅ Prevents multiple requests */}
+                    {loading ? "Logging in..." : "Login"}
                 </button>
             </form>
         </div>
