@@ -1,0 +1,29 @@
+/* src/styles/Layout.module.css */
+
+.appLayout {
+  display: flex; /* Or grid, depending on your overall layout */
+  height: 100vh; /* Make the app take full viewport height */
+}
+
+.mainContent {
+  flex-grow: 1; /* Allows main content to take up available space */
+  display: flex;
+  flex-direction: column; /* Stacks top banner and page content vertically */
+  transition: margin-left 0.3s ease; /* Smooth transition for sidebar toggle */
+  overflow-y: auto; /* Allow scrolling for content if it overflows */
+}
+
+.mainContentWithSidebar {
+  margin-left: 250px; /* Assuming your sidebar width is 250px when open */
+  /* Or use grid-column if using CSS Grid for the overall layout */
+}
+
+.mainContentFullWidth {
+  margin-left: 0; /* No margin when sidebar is absent */
+}
+
+.pageContent {
+  flex-grow: 1; /* Page content takes up remaining space below TopBanner */
+  padding: 20px; /* Example padding */
+  /* Add any other specific styling for the page content area */
+}

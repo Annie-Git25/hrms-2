@@ -1,0 +1,152 @@
+/* src/styles/HrAdminDashboard.module.css */
+
+.hrAdminDashboard {
+    padding: 2.5rem; /* Larger padding for a spacious feel, using rem for responsiveness */
+    background-color: var(--color-background); /* Use the main background color */
+    border-radius: var(--border-radius-large); /* Consistent large border-radius */
+    box-shadow: var(--shadow-deep); /* A slightly deeper shadow for dashboard container */
+    color: var(--color-text-light); /* Default text color for the dashboard */
+}
+
+.pageTitle {
+    font-size: 2.5rem; /* Larger, prominent title */
+    color: var(--color-primary); /* Use your primary accent color for the main title */
+    margin-bottom: 2.5rem; /* More space below the title */
+    border-bottom: 2px solid var(--color-border); /* Subtle separator line */
+    padding-bottom: 1.25rem;
+    font-weight: 600; /* Slightly bolder */
+}
+
+.dashboardSection {
+    background-color: var(--color-surface); /* Use your card/surface background color */
+    border-radius: var(--border-radius-medium); /* Consistent medium border-radius */
+    padding: 2rem; /* Generous padding within each section */
+    margin-bottom: 2rem; /* Space between sections */
+    box-shadow: var(--shadow-medium); /* Standard shadow for sections */
+    transition: transform 0.2s ease-in-out; /* Smooth hover effect for sections */
+}
+
+.dashboardSection:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.sectionTitle {
+    font-size: 1.8rem; /* Slightly smaller than page title, but still prominent */
+    color: var(--color-text-dark); /* Darker text for section titles for contrast */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border-light); /* Lighter border for sub-sections */
+    font-weight: 500;
+}
+
+/* --- Employee Stats Section Styling --- */
+.statsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between the cards container and button */
+    margin-bottom: 2.5rem; /* More space before the next main section */
+    padding: 2.5rem; /* More padding for this prominent section */
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary)); /* A subtle gradient for emphasis */
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-deep);
+    color: var(--color-white); /* White text on dark primary background */
+}
+
+.statsSection h3 {
+    color: var(--color-white); /* Ensure heading is white */
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.statCardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted min-width for cards */
+    gap: 1.5rem; /* Space between individual stat cards */
+}
+
+.statCard {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    padding: 1.5rem;
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--shadow-small);
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.statCard:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly less transparent on hover */
+}
+
+.statCard h4 {
+    color: var(--color-accent); /* Use your accent color for card titles */
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.statCard p {
+    font-size: 3rem; /* Larger numbers for key stats */
+    font-weight: 700; /* Bold numbers */
+    color: var(--color-white); /* Numbers should be white on the primary background */
+    line-height: 1; /* Tighten line height for large numbers */
+}
+
+.manageButton {
+    background-color: var(--color-secondary); /* Use your secondary action color */
+    color: var(--color-white);
+    padding: 0.8rem 1.8rem; /* Adjusted padding for buttons */
+    border: none;
+    border-radius: var(--border-radius-small); /* Small border-radius for buttons */
+    cursor: pointer;
+    font-size: 1.1rem; /* Slightly larger button font */
+    font-weight: 500;
+    align-self: flex-end; /* Keeps button to the right */
+    transition: background-color var(--transition-speed-fast) ease-in-out, transform 0.1s ease-out;
+    box-shadow: var(--shadow-small);
+}
+
+.manageButton:hover {
+    background-color: var(--color-secondary-dark); /* Darker secondary on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: var(--shadow-medium);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .hrAdminDashboard {
+        padding: 1.5rem;
+    }
+
+    .pageTitle {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .dashboardSection, .statsSection {
+        padding: 1.5rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.5rem;
+    }
+
+    .statCardsContainer {
+        grid-template-columns: 1fr; /* Stack cards vertically on smaller screens */
+    }
+
+    .statCard h4 {
+        font-size: 1.1rem;
+    }
+
+    .statCard p {
+        font-size: 2.5rem;
+    }
+
+    .manageButton {
+        width: 100%; /* Full width button on small screens */
+        align-self: stretch; /* Stretch to fill width */
+    }
+}
